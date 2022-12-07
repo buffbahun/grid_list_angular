@@ -1,0 +1,21 @@
+<div class="foot">
+    <ul class="pagination">
+        <li>
+            <select (change)="changeRowNumber($event)" class="form-control form-control-sm">
+                <option *ngFor="let rw of _allowedRows" [value]="rw" class="form-control">
+                    {{ rw }}
+                </option>
+            </select>
+        </li>
+        <li>
+            <button (click)="changePage(false)" class="btn btn-sm btn-primary"> &lt; </button>
+        </li>
+        <li class="pt-2">
+            <span>{{ _pageNo }} of {{ _totalPages }}</span>
+        </li>
+        <li>
+            <button (click)="changePage(true)" class="btn btn-sm btn-primary"> &gt; </button>
+        </li>
+    </ul>
+
+</div>
