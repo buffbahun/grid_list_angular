@@ -1,0 +1,85 @@
+<!--<div>
+	<input *ngIf="filterable" type="text" (change)="filter($event)">
+	<input *ngIf="!filterable" disabled type="text" (change)="filter($event)">
+
+	<button *ngIf="sortable" (click)="toggleAsc()">Sort Asc {{_isAsc}} </button>
+	<button *ngIf="!sortable" disabled (click)="toggleAsc()">Sort Asc</button>
+
+	<button *ngIf="sortable" (click)="toggleDsc()">Sort Dsc {{_isDsc}}</button>
+	<button *ngIf="!sortable" disabled (click)="toggleDsc()">Sort Dsc</button>
+</div>-->
+
+<div ngbDropdown class="dropdown dropdown-inline">
+	<button ngbDropdownToggle type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md1" [disabled]="!sortable && !filterable">
+		<i class="flaticon-more "></i>
+	</button>
+	<div ngbDropdownMenu class="dropdown-menu custom-dropdown">
+		<ul class="kt-nav pt-0">
+			<li class="kt-nav__item" *ngIf="sortable">
+				<a href="javascript:;" class="kt-nav__link">
+					<i class="kt-nav__link-icon flaticon2-sort-down icon-rotate"></i>
+					<span (click)="toggleAsc()" class="kt-nav__link-text"> Sort Ascending </span>
+				</a>
+			</li>
+			<li class="kt-nav__item" *ngIf="sortable">
+				<a href="javascript:;" class="kt-nav__link">
+					<i class="kt-nav__link-icon flaticon2-sort-down"></i>
+					<span (click)="toggleDsc()" class="kt-nav__link-text"> Sort Descending </span>
+				</a>
+			</li>
+			<li class="kt-nav__item">
+				<a href="javascript:;" class="kt-nav__link" (click)="showFilter()">
+					<i class="kt-nav__link-icon flaticon2-avatar"></i>
+					<span class="kt-nav__link-text">Filter</span>
+				</a>
+				<ul *ngIf="_filter" class="pl-0">
+					<li class="kt-nav__item pl-3 pr-3 pb-3 pt-2">
+						<select class="form-control form-control-sm">
+							<option class="kt-nav__link-text">
+								Contains
+							</option>
+							<option class="kt-nav__link-text">
+								Is Equal to
+							</option>
+						</select>
+
+					</li>
+					<li class="kt-nav__item pl-3 pr-3">
+						<input *ngIf="filterable" type="text" (change)="filter($event)" class="form-control form-control-sm">
+					</li>
+					<li class="kt-nav__item pl-3 pr-3 pb-3 pt-2">
+						<select class="form-control form-control-sm">
+							<option class="kt-nav__link-text">
+								And
+							</option>
+							<option class="kt-nav__link-text">
+								or
+							</option>
+						</select>
+					</li>
+					<li class="kt-nav__item kt-nav__item pl-3 pr-3 pb-3 pt-2">
+						<select class="form-control form-control-sm">
+							<option class="kt-nav__link-text">
+								Start with
+							</option>
+							<option class="kt-nav__link-text">
+								End with
+							</option>
+						</select>
+					</li>
+					<li class="kt-nav__item pl-3 pr-3">
+						<input *ngIf="filterable" type="text" (change)="filter($event)" class="form-control form-control-sm">
+					</li>
+
+					<li class="kt-nav__item kt-nav__item pl-3 pr-3 pb-3 pt-2">
+						<button class="btn btn-sm btn-primary mr-2">Filter</button>
+						<button class="btn btn-sm btn-secondary mr-2">Clear</button>
+					</li>
+
+
+				</ul>
+
+			</li>
+		</ul>
+	</div>
+</div>
