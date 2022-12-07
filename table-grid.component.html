@@ -1,0 +1,56 @@
+<div class="wrapper">
+    <div class="table-responsive">
+        <table class="table data-table align-middle table-hover table-striped w-100">
+            <thead>
+                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                    <th>S.N. </th>
+                    <th 
+                    *ngFor="let options of _optionsList; let i = index" 
+                    class="pe-2 sorting_disabled"
+                    [resizeColumn]="true" [index]="i">
+                        <span>{{ options.header }}</span>
+                       
+                        <ng-container ktPortletTools>
+                            <kt-table-filter [sortable]="options.sortable"
+                                             [filterable]="options.filterable"
+                                             [key]="options.key"
+                                             (emitFilterOptions)="getNewDatas($event)">
+                            </kt-table-filter>
+                        </ng-container>
+
+
+                    </th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr *ngFor="let data of datas; let i = index">
+                    <td>
+                        {{i + 1}}
+                    </td>
+                    <ng-container *ngFor="let options of _optionsList">
+                        <td *ngIf="options.key">
+                            {{ data[options.key] }}
+                        </td>
+                    </ng-container>
+                    <td *ngFor="let nes of nest">
+                        <ng-container
+                        [ngTemplateOutlet]="nes"
+                        [ngTemplateOutletContext]="{$implicit: data}" 
+                        >
+                        </ng-container>
+                    </td>
+                        
+                </tr>
+            </tbody>
+
+        </table>
+
+        <div *ngIf="paginator" class="float-right">
+            <kt-table-paginator [customeRows]="customeRows"
+                                [totalNumberOfDatas]="totalNumberOfDatas"
+                                (emitPageOptions)="getNewDatas($event)">
+            </kt-table-paginator>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+
+table thead th,table tbody td {
+   position: relative;
+   border:solid #ddd 1px;
+}
+
+.resize-holder {
+    cursor: col-resize;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    top: 0;
+    z-index: 1;
+  }
+
+  .resizing {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: col-resize;
+  }
+
+  span {       
+    display: block; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
